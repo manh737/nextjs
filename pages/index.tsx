@@ -6,6 +6,7 @@ import { getSortedPostsData } from "../lib/posts";
 import Layout from "../components/layout";
 import Date from "../components/date";
 import utilStyles from "../styles/utils.module.sass";
+import { GetStaticProps } from "next";
 
 export default function Home({
   allPostsData,
@@ -36,11 +37,11 @@ export default function Home({
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = () => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
     },
   };
-}
+};
